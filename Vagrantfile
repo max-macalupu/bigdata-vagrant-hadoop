@@ -14,4 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		setVars.vm.provision :shell, :path => "provision.sh"
 	end
 	config.vm.provision "shell", inline: "source /etc/environment"
+	config.vm.define :setVars do |setVars|
+		setVars.vm.provision :shell, :path => "postHadoopSetup.sh"
+	end
 end
